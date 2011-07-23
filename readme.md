@@ -1,20 +1,20 @@
-# EEsaver: The Basic Idea
+## EEsaver: The Basic Idea
 
 EEsaver is a starting point for building ExpressionEngine-powered Treesaver sites. [We love EE](http://monkeydo.biz/), and we think that its highly-customizable nature (not to mention its low price) makes it an ideal system for delivering the long-form, magazine-style content Treesaver was designed to publish.
 
 What we've put together is a free set of ExpressionEngine templates, plus instructions for configuring EE to make them work. Drop in some content and you've got the beginnings of your own cross-platform magazine.
 
-## Treesaver?
+### Treesaver?
 
 In a nutshell, [Treesaver](http://treesaver.net/) is a JavaScript framework for creating magazine-style layouts using standards-compliant HTML and CSS. You should go read about it; it has a ton of features.
 
-# The Demo
+## The Demo
 
 Starting with the open-source [Treesaver.js](http://treesaverjs.com/) files (and adding a few bits and pieces of markup from our own [HTML5 Reset](http://html5reset.org/)) we've developed a simple set of requirements for integrating Treesaver and EE.
 
 We then had a little fun (thanks to [Google Books](http://books.google.com/books?id=EfEvAAAAMAAJ&pg=PP1#v=onepage&q&f=false)) and dug out some public-domain content from some of the very earliest issues of Harper's Magazine.
 
-## Harper's Magazine, Volume 9 (published 1854)
+### Harper's Magazine, Volume 9 (published 1854)
 
 (Do some window resizing to see Treesaver's responsiveness in action.)
 
@@ -25,7 +25,7 @@ We then had a little fun (thanks to [Google Books](http://books.google.com/books
 * [A Few Words About Birds](http://eesaver.monkeydo.biz/harpers/article/volume-9/a-few-words-about-birds)
 * [The Last Moments of Beethoven](http://eesaver.monkeydo.biz/harpers/article/volume-9/the-last-moments-of-beethoven) This is actually a really neat little story. (Completely apocryphal we assume…)
 
-# The Set Up
+## The Set Up
 
 <i>Note: These instructions assume a decent level of familiarity with ExpressionEngine and how it works. If you'd like to learn more about EE, pay a visit to the official documentation.</i>
 
@@ -39,11 +39,11 @@ Since what Treesaver creates is sort of a metaphorical magazine, let's extend th
 
 There are other ways to do it (using categories as issues for example), but this works for us.
 
-## Before Starting: Install ExpressionEngine and the Treesaver Assets
+### Before Starting: Install ExpressionEngine and the Treesaver Assets
 
 Once you have Expression Engine installed (no special changes to the normal set up procedures are required), you can move on to...
 
-## Step One: Set up a channel.
+### Step One: Set up a channel.
 
 This is easy, which is good considering we will be creating a new channel each time we release a new issue of our magazine.
 
@@ -64,7 +64,7 @@ Next, set the Channel Posting Preferences:
 
 Feel free to do other things, but these settings are all we need right now.
 
-## Step Two: Custom Fields
+### Step Two: Custom Fields
 
 This can get as complicated as you want it to once you've gotten the hang of Treesaver, but we've kept it very simple:
 
@@ -77,7 +77,7 @@ This can get as complicated as you want it to once you've gotten the hang of Tre
 
 A note on markup: You don't want to let ExpressionEngine do your text formatting for you. EE's formatting options (either "Auto <br />" or "XHTML" don't play well with some of the HTML5 tags you'll probably need to use (like `figure`). Until a better parser comes along, set all your fields' Default Text Formatting to None (the default is "XHTML"), and add `p` tags to your content fields by hand.
 
-## Step Three: Templates
+### Step Three: Templates
 
 <img src="http://eesaver.monkeydo.biz/-/img/screenshots/templates.gif" alt="" />
 
@@ -90,7 +90,7 @@ All our templates are set to be of the type "Web Page," since they all have Expr
 
 The name of the template group is essentially whatever we want to show up in our URLs; here it's the name of our magazine. If our domain name were already the name of our magazine, we'd probably name the group issues or something.
 
-## Step Four: Snippets
+### Step Four: Snippets
 
 We have two Snippets (accessed through the Template Manager); one is un-important, the other is quite important.
 
@@ -101,16 +101,16 @@ We have two Snippets (accessed through the Template Manager); one is un-importan
 
 Please note: Currently the templates *require* that a cover Snippet exists for each issue.
 
-## Notes on Images/Figures
+### Notes on Images/Figures
 
 Putting images into articles is one of the more counter-intuitive aspects of working with Treesaver. In order to achieve a fully flexible and responsive layout engine, it's often not possible to ensure that an image is adjacent to a related piece of text.
 
 Let's look at a sample figure from our Harper's demo and break down the important bits:
 
-<pre><code><figure>
-	<img data-sizes="single" src="/-/img/rome/rome-1-280.jpg" width="280" height="244" alt="">
-	<img data-sizes="double" data-src="/-/img/rome/rome-1-600.jpg" width="600" height="429" alt="">
-</figure></code></pre>
+	<figure>
+		<img data-sizes="single" src="/-/img/rome/rome-1-280.jpg" width="280" height="244" alt="">
+		<img data-sizes="double" data-src="/-/img/rome/rome-1-600.jpg" width="600" height="429" alt="">
+	</figure>
 
 * <b>Multiple images</b>: There are two image tags here, one for large layouts and one for small ones. The small one is called first, but if the layout engine determines that the viewport is large enough to accommodate the larger version, it will swap it in.
 * <b>data-sizes</b>: This data attribute tells Treesaver how many columns this image is allowed to take up.
