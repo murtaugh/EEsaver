@@ -1,0 +1,23 @@
+
+	<article data-grids="cover">
+	
+		<figure>
+			<hgroup data-sizes="titlePage fallback">
+		
+				<h1>Harper&apos;s New Monthly Magazine</h1>
+				<h2>Excerpts from Volume 9</h2>
+
+			</hgroup>
+		</figure>
+		
+		<figure>
+			<hgroup data-sizes="publicationInfo fallback">
+				<p class="keepTogether">
+					Originally published in 1854.<br>
+					This work is in the public domain.<br>
+					Powered by <a href="http://expressionengine.com">ExpressionEngine</a> & <a href="http://treesaver.net/">Treesaver.js</a>
+				</p>
+			</hgroup>
+		</figure>
+	
+	</article>

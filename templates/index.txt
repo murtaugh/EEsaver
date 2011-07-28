@@ -1,4 +1,5 @@
-{exp:channel:entries channel="{segment_3}" url_title="{segment_4}" limit="1"}
+{if segment_2 == ""}{redirect="/issues"}{/if}
+
 <!doctype html>
 
 <!--[if lt IE 7 ]> <html class="ie ie6 no-js no-treesaver"> <![endif]-->
@@ -13,47 +14,52 @@
 
 	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1,minimum-scale=1,maximum-scale=1" />
 
-	<title>{title} - {channel}</title>
-	<meta name="title" content="{title} - {channel}">
+	{exp:channel:info channel="{segment_2}"}
+	<title>{channel_title}</title>
+	<meta name="title" content="{channel_title}">
 	<meta name="description" content="{channel_description}">
 	<!-- Google will often use this as its description of your page/site. Make it good. -->
 
-	<meta name="DC.title" content="{title} - {channel}">
-	<meta name="DC.subject" content="{article_excerpt}">
-	<meta name="DC.creator" content="Who made this site.">
+	<meta name="DC.title" content="{channel_title}">
+	<meta name="DC.subject" content="{channel_description}">
+	<meta name="DC.creator" content="Design and layout Monkey Do, LLC;">
+	{/exp:channel:info}
 	
 	<meta name="google-site-verification" content="">
 	<!-- Speaking of Google, don't forget to set your site up: http://google.com/webmasters -->
 	
-	<meta name="author" content="Your Name Here">
-	<meta name="Copyright" content="Copyright Your Name Here 2011. All Rights Reserved.">
+	<meta name="author" content="Monkey Do LLC">
+	<meta name="Copyright" content="Design and layout copyright 2011 Monkey Do LLC; Text and Illustrations are public domain.">
 	
-	<link rel="shortcut icon" href="-/img/favicon.ico">
+	<link rel="shortcut icon" href="/assets-eesaver/favicon-eesaver.png">
 	<!-- This is the traditional favicon.
 		 - size: 16x16 or 32x32
 		 - transparency is OK
 		 - see wikipedia for info on browser support: http://mky.be/favicon/ -->
 		 
-	<link rel="apple-touch-icon" href="-/img/apple-touch-icon.png">
+	<link rel="apple-touch-icon" href="/assets-eesaver/apple-touch-icon-eesaver.png">
 	<!-- The is the icon for iOS's Web Clip.
 		 - size: 57x57 for older iPhones, 72x72 for iPads, 114x114 for iPhone4's retina display (IMHO, just go ahead and use the biggest one)
 		 - To prevent iOS from applying its styles to the icon name it thusly: apple-touch-icon-precomposed.png
 		 - Transparency is not recommended (iOS will put a black BG behind the icon) -->
 
-	<!-- Treesaver Dependencies -->
-	<link rel="resources" href="/index.php/harpers/resources/">
-	<link rel="contents" href="/index.php/harpers/" />
-	
-	<script src="/-/js/treesaver-0.9.1.js"></script>
-	<link rel="stylesheet" href="/-/css/style.css">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
+	<link rel="resources prefetch" href="/{segment_1}/resources/{segment_2}">
+	<link rel="contents prefetch" href="/{segment_1}/toc/{segment_2}" />
+
+	<script src="/assets-eesaver/treesaver-0.9.2.js"></script>
+	<link rel="stylesheet" href="/assets-eesaver/style-eesaver.css">
+
+	{if "{analytics-id}" != ""}
 	<!-- Google Analytics
 		Customized for Treesaver to track article changes as page views
-		Add your ID and un-comment
+		Add your ID and un-comment -->
 	<script>
 	var _gaq = _gaq || [];
 	// Edit to add your tracking ID
-	_gaq.push(['_setAccount', 'UA-XXXXXXX-XX']);
+	_gaq.push(['_setAccount', '{analytics-id}']);
 	_gaq.push(['_trackPageview']);
 	
 	(function() {
@@ -68,24 +74,14 @@
 	    _gaq.push(['_trackPageview', e.path]);
 	  });
 	})();
-	</script> -->
+	</script>
+	{/if}
 
 </head>
-	
+
 <body class="eesaver">
 
-	<article>
-		<figure>
-			<h2 data-sizes="title fallback">
-				<span class="chapter">{channel}</span>
-				{title}
-			</h2>
-		</figure>
-	
-		{article_content}
-		
-	</article>
+	{cover-{segment_2}}
 	
 </body>
 </html>
-{/exp:channel:entries}

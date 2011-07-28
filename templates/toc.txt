@@ -12,30 +12,30 @@
 
 	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1,minimum-scale=1,maximum-scale=1" />
 
-	{exp:channel:info channel="{segment_2}"}
-	<title>{channel_title}</title>
-	<meta name="title" content="{channel_title}">
-	<meta name="description" content="{channel_description}">
+	{exp:channel:info channel="{segment_3}"}
+	<title>Table of Contents: {channel_title}</title>
+	<meta name="title" content="Table of Contents: {channel_title}">
+	<meta name="description" content="Table of Contents for {channel_title}">
 	<!-- Google will often use this as its description of your page/site. Make it good. -->
 
 	<meta name="DC.title" content="{channel_title}">
 	<meta name="DC.subject" content="{channel_description}">
-	<meta name="DC.creator" content="Who made this site.">
+	<meta name="DC.creator" content="Design and layout Monkey Do, LLC;">
 	{/exp:channel:info}
 	
 	<meta name="google-site-verification" content="">
 	<!-- Speaking of Google, don't forget to set your site up: http://google.com/webmasters -->
 	
-	<meta name="author" content="Your Name Here">
-	<meta name="Copyright" content="Copyright Your Name Here 2011. All Rights Reserved.">
+	<meta name="author" content="Monkey Do LLC">
+	<meta name="Copyright" content="Design and layout copyright 2011 Monkey Do LLC; Text and Illustrations are public domain.">
 	
-	<link rel="shortcut icon" href="/-/img/favicon.ico">
+	<link rel="shortcut icon" href="/assets-eesaver/favicon-eesaver.png">
 	<!-- This is the traditional favicon.
 		 - size: 16x16 or 32x32
 		 - transparency is OK
 		 - see wikipedia for info on browser support: http://mky.be/favicon/ -->
 		 
-	<link rel="apple-touch-icon" href="/-/img/apple-touch-icon.png">
+	<link rel="apple-touch-icon" href="/assets-eesaver/apple-touch-icon-eesaver.png">
 	<!-- The is the icon for iOS's Web Clip.
 		 - size: 57x57 for older iPhones, 72x72 for iPads, 114x114 for iPhone4's retina display (IMHO, just go ahead and use the biggest one)
 		 - To prevent iOS from applying its styles to the icon name it thusly: apple-touch-icon-precomposed.png
@@ -44,19 +44,20 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-	<link rel="resources" href="/index.php/harpers/resources">
-	<link rel="contents self" href="/index.php/harpers/" />
+	<link rel="resources prefetch" href="/{segment_1}/resources/{segment_3}">
+	<link rel="contents self" href="/{segment_1}/toc/{segment_3}" />
 
-	<script src="/-/js/treesaver-0.9.2.js"></script>
-	<link rel="stylesheet" href="/-/css/style.css">
+	<script src="/assets-eesaver/treesaver-0.9.2.js"></script>
+	<link rel="stylesheet" href="/assets-eesaver/style-eesaver.css">
 
+	{if "{analytics-id}" != ""}
 	<!-- Google Analytics
 		Customized for Treesaver to track article changes as page views
-		Add your ID and un-comment
+		Add your ID and un-comment -->
 	<script>
 	var _gaq = _gaq || [];
 	// Edit to add your tracking ID
-	_gaq.push(['_setAccount', 'UA-XXXXXXX-XX']);
+	_gaq.push(['_setAccount', '{analytics-id}']);
 	_gaq.push(['_trackPageview']);
 	
 	(function() {
@@ -71,28 +72,45 @@
 	    _gaq.push(['_trackPageview', e.path]);
 	  });
 	})();
-	</script> -->
+	</script>
+	{/if}
 
 </head>
 
 <body class="eesaver">
 
-	<article data-grids="toc">
-		
-		{exp:channel:entries channel="{segment_2}" limit="1"}
-		<div itemscope data-properties="self">
-			<h1 itemprop="title">
-				<a href="/index.php/harpers/{channel_short_name}" itemprop="url">{channel}</a>
-			</h1>
-		</div>
+	<article data-grids="toc">		
+
+		{exp:channel:entries channel="{segment_3}" limit="1"}
+		<figure>
+			<h2 data-sizes="titleToc">
+				<a href="/{segment_1}/toc/{segment_3}">Contents</a>
+			</h2>
+		</figure>
 		{/exp:channel:entries}
 
-		{exp:channel:entries channel="{segment_2}"}
-		<div itemscope>
-			<h3 itemprop="title"><a href="/index.php/harpers/article/{channel_short_name}/{url_title}" itemprop="url">{title}</a></h3>
-		</div>
-	
-		{/exp:channel:entries}
+
+		<figure>
+			<hgroup data-sizes="contentsListing fallback">
+
+				<div itemscope>
+					<h3 itemprop="title"><a itemprop="url" href="/{segment_1}/{segment_3}">i. Cover</a></h3>
+				</div>
+					
+				<div itemscope>
+					<h3 itemprop="title"><a itemprop="url" href="/{segment_1}/toc/{segment_3}">ii. Contents</a></h3>
+				</div>
+				
+				{exp:channel:entries channel="{segment_3}" orderby="date" sort="asc"}
+
+				<div class="keeptogether" itemscope>
+					<h3 itemprop="title"><a itemprop="url" href="/{segment_1}/article/{channel_short_name}/{url_title}">{title}</a></h3>
+				</div>
+
+				{/exp:channel:entries}
+					
+			</hgroup>
+		</figure>
 
 	</article>
 	

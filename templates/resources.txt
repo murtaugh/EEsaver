@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<body>
+
+<div class="chrome chrome-small">
+	<div class="viewer"></div>
+	<div class="pagenumbers">
+		<span data-bind="pagenumber">1</span> /
+		<span data-bind="pagecount">5</span>
+	</div>
+	
+	<div class="controls">
+		<button class="prev">Prev</button>
+		<button class="next">Next</button>
+	</div>
+</div>
+
+<div class="chrome">
+	<nav>
+		<div class="listings">
+		{exp:channel:entries channel="{segment_3}" limit="1" dynamic="off"}
+		<h4><a href="/{segment_1}/{channel_short_name}" itemprop="url">{channel}</a></h4>
+		{/exp:channel:entries}
+	        <ul>
+			{exp:channel:entries channel="{segment_3}" dynamic="off" orderby="date" sort="asc"}
+			<li><a href="/{segment_1}/article/{channel_short_name}/{url_title}" itemprop="url">{title}</a></li>
+			{/exp:channel:entries}
+	        </ul>
+		</div>
+	        <div id="navTab"></div>
+	</nav>
+	<div class="endPaper">
+		<div class="viewer"></div>
+		<div class="pagenumbers">
+			<span data-bind="pagenumber">1</span> /
+			<span data-bind="pagecount">5</span>
+		</div>
+	</div>
+	<div class="controls">		
+		<button class="prev">Prev</button>
+		<button class="next">Next</button>
+	</div>
+</div>
+
+<!-- cover grids -->
+
+<div class="grid cover grid-single">
+	<div class="column"></div>
+</div>
+
+<div class="grid cols-2 cover">
+	<div class="container cols-2" data-sizes="titlePage"></div>
+	<div class="container cols-2 bottom" data-sizes="publicationInfo"></div>
+</div>
+
+<div class="grid cols-3 cover">
+	<div class="container cols-3" data-sizes="titlePage"></div>
+	<div class="container cols-3 bottom" data-sizes="publicationInfo"></div>
+</div>
+
+<!-- article grids, main -->
+
+<div class="grid">
+	<div class="container" data-sizes="title"></div>
+	<div class="column"></div>
+</div>
+
+<div class="grid cols-2">
+	<div class="container cols-2" data-sizes="title"></div>
+	<div class="column"></div>
+	<div class="column col-2"></div>
+</div>
+
+<div class="grid cols-3">
+	<div class="container cols-3" data-sizes="title"></div>
+	<div class="column"></div>
+	<div class="column col-2"></div>
+	<div class="column col-3"></div>
+</div>
+
+<div class="grid grid-single even">
+	<div class="container illo" data-sizes="single"></div>
+	<div class="column"></div>
+</div>
+
+<div class="grid grid-double cols-2 page-2 page-5 page-8 page-11 page-14 page-17 page-20 page-23 page-26 page-29">
+	<div class="container cols-2 illo" data-sizes="double"></div>
+	<div class="column"></div>
+	<div class="column col-2"></div>
+</div>
+
+<div class="grid grid-triple cols-3 even">
+	<div class="column"></div>
+	<div class="container col-2 cols-2 illo" data-sizes="double"></div>
+	<div class="column col-2"></div>
+	<div class="column col-3"></div>
+</div>
+
+<!-- table of contents grids -->
+
+<div class="grid toc grid-single">
+	<div class="column"></div>
+</div>
+
+<div class="grid cols-2 toc grid-double">
+	<div class="container cols-2 top" data-sizes="titleToc"></div>
+	<div class="container cols-2" data-sizes="contentsListing"></div>
+	<div class="column"></div>
+	<div class="column col-2"></div>
+</div>
+
+<div class="grid cols-3 toc">
+	<div class="container cols-3 top" data-sizes="titleToc"></div>
+	<div class="container cols-3" data-sizes="contentsListing"></div>
+	<div class="column col-2 toc"></div>
+</div>
+
+<div class="lightbox">
+	<div class="container"></div>
+	<button class="close">Close</button>
+</div>
+
+<div class="loading">
+Loading
+</div>
+
+<div class="error">
+Error
+</div>
+
+</body>
+</html>
